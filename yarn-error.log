@@ -1,0 +1,68 @@
+Arguments: 
+  /usr/local/Cellar/node/8.2.1/bin/node /usr/local/bin/yarn start
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.2.1
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "wisebrothers",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "server": "node server.js",
+      "client": "node scripts/start-client.js",
+      "start": "concurrently \"nodemon server.js\" \"npm run client\"",
+      "build": "node scripts/build.js",
+      "seed": "node scripts/seedDB.js",
+      "test": "jest"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.16.3",
+      "express-session": "^1.15.6",
+      "mongoose": "^5.0.11",
+      "passport": "^0.4.0",
+      "passport-local": "^1.0.0",
+      "passport-local-mongoose": "^5.0.0"
+    },
+    "devDependencies": {
+      "concurrently": "^3.5.1",
+      "jest": "^22.4.3",
+      "nodemon": "^1.17.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 127
+  Command: sh
+  Arguments: -c concurrently "nodemon server.js" "npm run client"
+  Directory: /Users/macuser/Desktop/Bootcamp/FinalProject/AdMain
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/local/lib/node_modules/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/local/lib/node_modules/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:30281:17)
+      at emitTwo (events.js:125:13)
+      at ChildProcess.emit (events.js:213:7)
+      at maybeClose (internal/child_process.js:921:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
