@@ -2,8 +2,7 @@ import React from 'react';
 import "./style.css";
 import {Link} from 'react-router-dom';
 
-const SignIn = (props)=> {
-
+const LoginBox = (props) => {
 	return (
 		<div>
 			<h1>SIGN IN</h1>
@@ -22,4 +21,4 @@ const SignIn = (props)=> {
 
 }
 
-export default SignIn;
+export default LoginBox;

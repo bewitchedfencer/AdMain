@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import axios from 'axios';
 
-import SignIn from "./components/SignIn";
+import LoginBox from './components/LoginBox';
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
 
@@ -87,13 +87,14 @@ class App extends Component {
         <Route exact path = "/" render = {()=> {
           if(loggedIn){
             return <Redirect to = "/home" />
-          } else{
-            return <SignIn 
+          } 
+          else{
+            return <LoginPage><LoginBox 
               handleChange= {this.handleChange} 
               handleSubmit = {this.handleSubmit}
               email = {this.state.email}
               password = {this.state.password}
-            />
+            /></LoginPage>
           } 
         }}/>
         <Route exact path = "/signup" render = {()=> {
