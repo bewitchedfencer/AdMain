@@ -133,9 +133,9 @@ updateProjects: (req, res) => {
 
 //patch all proposals
 updateProposals: (req, res) => {
-    const chosenProposal = req._id;
-    const proposalUpdate = req.update;
-    db.Proposal.update({where:{_id:chosenProposal}}, {$set:proposalUpdate})
+    const chosenProposal = req.params.id;
+    const proposalUpdate = req.body;
+    db.Proposal.update({_id:chosenProposal}, proposalUpdate)
     .then(function(changedProposal){
         res.send(`Proposal with id ${changedProposal._id} has been updated.`);
     });

@@ -7,7 +7,7 @@ import "./style.css";
 const TableRow = (props) => {
 	return(
 		<tr>
-			{...props}
+			{props.children}
 		</tr>
 	);
 }
