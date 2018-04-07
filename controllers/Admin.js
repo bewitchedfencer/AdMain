@@ -63,8 +63,10 @@ getMaintenance: (req, res) => {
 //patch a maintenance item
 changeMaintenance: (req, res) => {
     //update this patch request with the correct where clause.
-    db.MaintenanceReq.update({where:{_id:000}}).then(function(changedMain){
-        res.send(`maintenance updated for id ${req.id}`)
+    const chosenMaintenance = req.id;
+    const mainUpdate = req.update;
+    db.MaintenanceReq.update({where:{_id:chosenMaintenance}}, {$set:mainUpdate}).then(function(changedMain){
+        res.send(`maintenance updated for id ${changedMain._id}`)
     });
 },
 
@@ -80,7 +82,7 @@ allWarehouses: (req, res) => {
 
 //patch todos
 updateToDos: (req, res) => {
-    const chosenToDo = req.id;
+    const chosenToDo = req._id;
     const updateOne = req.update;
     db.ToDo.update({where:{_id:chosenToDo}}, {$set:{updateOne}})
     .then(function(updatedEntry){
@@ -97,31 +99,79 @@ addToDo: (req, res) => {
 },
 
 //get all followups
+getAllFollowups: (req, res) => {
+    db.Followup.find({}).then(function(followups){
+        res.json(followups);
+    });
+},
 
 //filter all followups
 
 //patch all followups
-
-//get all projects
+updateFollowUps: (req, res) => {
+    const chosenFollowup = req._id;
+    const updateFollow = req.update;
+    db.Followup.update({where:{_id:chosenFollowup}}, {$set:updateFollow})
+    .then(function(updatedFollowUp){
+        res.send(`Updated follow-up with id ${updatedFollowUp._id}`);
+    });
+},
 
 //filter all projects
 
 //patch all projects
-
-//get all proposals
+updateProjects: (req, res) => {
+    const chosenProject = req._id;
+    const projectUpdate = req.update;
+    db.Projects.update({where:{_id:chosenProject}}, {$set:projectUpdate})
+    .then(function(proyectos){
+        res.send(`Updated the project with id ${proyectos._id}.`);
+    });
+},
 
 //filter all proposals
 
 //patch all proposals
+updateProposals: (req, res) => {
+    const chosenProposal = req._id;
+    const proposalUpdate = req.update;
+    db.Proposal.update({where:{_id:chosenProposal}}, {$set:proposalUpdate})
+    .then(function(changedProposal){
+        res.send(`Proposal with id ${changedProposal._id} has been updated.`);
+    });
+},
 
 //post a project
+newProject: (req, res) => {
+    const createdProject = req.body;
+    db.Projects.create(createdProject).then(function(projectCreated){
+        res.send(`The project has been added with new id ${projectCreated._id}.`);
+    });
+},
 
 //post a proposal
+newProposal: (req, res) => {
+    const createdProposal = req.body;
+    db.Projects.create(createdProposal).then(function(proposalCreated){
+        res.send(`The proposal has been added with new id ${proposalCreated._id}.`);
+    });
+},
 
 //post a followup
+newFollowup: (req, res) => {
+    const createdFollowup = req.body;
+    db.Projects.create(createdFollowup).then(function(followupCreated){
+        res.send(`The followup has been added with new id ${followupCreated._id}.`);
+    });
+},
 
 //post an application
-
+newApplication: (req, res) => {
+    const createdApp = req.body;
+    db.Projects.create(createdApp).then(function(appCreated){
+        res.send(`The new application has been added with new id ${appCreated._id}.`);
+    });
+},
 
 
 };
