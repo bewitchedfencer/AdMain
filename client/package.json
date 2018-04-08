@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "npm": "^5.8.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-modal": "^3.3.2",
+    "react-responsive-carousel": "^3.1.35",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1"
   },

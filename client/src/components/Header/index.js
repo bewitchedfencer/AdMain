@@ -6,8 +6,8 @@ import "./style.css";
 
 const Header = (props) => {
 	return(
-		<div className="header">
-			{...props}
+		<div className="header" {...props}>
+			{props.children}
 		</div>
 	);
 }

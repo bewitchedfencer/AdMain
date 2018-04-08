@@ -7,7 +7,10 @@ import "./style.css";
 const LoginPage = (props) => {
 	return(
 		<div>
-
+			<Header>Welcome to Wise Brothers!</Header>
+			<div className="container-fluid">
+			
+			</div>
 		</div>
 	);
 }
