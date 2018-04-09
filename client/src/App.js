@@ -6,6 +6,8 @@ import axios from 'axios';
 import LoginBox from './components/LoginBox';
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
+import LoginPage from './Pages/LoginPage';
+
 
 class App extends Component {
   state = {

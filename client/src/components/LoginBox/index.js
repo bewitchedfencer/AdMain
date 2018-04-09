@@ -15,6 +15,10 @@ const LoginBox = (props) => {
 				<input name='password' type='password' value = {props.password} onChange = {props.handleChange} />
 				<br />
 				<button type = 'submit' name = "/auth/signin" onClick = {props.handleSubmit}>Sign In</button>
+				<div>
+				<Link to = "/">Forgot Password?</Link>
+				<Link to = "/">Register</Link>
+				</div>
 			</form>
 		</div>
 	);

@@ -48,5 +48,6 @@ module.exports = function (passport) {
 		res.json();
 	});
 
+	
 	return router;
 };
