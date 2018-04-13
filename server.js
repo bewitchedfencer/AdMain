@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const models = require("./models");
-const logger = require("morgan");
 
 const passport = require("passport");
 const session = require('express-session');
@@ -30,7 +29,7 @@ mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 //add mongo heroku uri
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/wisebrothers-development"
+  process.env.MONGODB_URI || "mongodb://localhost/wisebrothers"
 );
 
 // Start the API server

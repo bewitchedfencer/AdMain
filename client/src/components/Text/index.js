@@ -6,7 +6,7 @@ import "./style.css";
 const Text = (props) => {
 	return(
 		<div>
-			<section>
+			<section className="text-center">
 				{props.children}
 			</section>
 		</div>

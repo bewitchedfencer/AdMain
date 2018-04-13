@@ -51,9 +51,18 @@ postSiteObservations: (req, res) => {
     });
 },
 
-//get all maintenance activity
-getMaintenance: (req, res) => {
-    db.MaintenanceReq.find({}).then(function(maintenance){
+//get all tenant maintenance activity
+getTenMaintenance: (req, res) => {
+    db.MaintenanceReq.find({unit, site, mainCat, description, alarm, bestTimes, resubmit})
+    .then(function(maintenance){
+        res.json(maintenance);
+    });
+},
+
+//get all maintenance data for the maintenance team
+getMainMaintenance: (req, res) => {
+    db.MaintenanceReq.find({unit, site, mainCat, description, alarm, bestTimes, resubmit, contactName, contact})
+    .then(function(maintenance){
         res.json(maintenance);
     });
 },

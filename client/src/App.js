@@ -5,7 +5,12 @@ import axios from 'axios';
 
 import LoginBox from './components/LoginBox';
 import SignUp from "./components/SignUp";
-import Home from "./components/Home";
+import NavbarMain from "./components/NavbarMain";
+import NavbarTenant from "./components/NavbarTenant";
+
+import MainMain from "./Pages/MainMain";
+import TenantMain from "./Pages/TenantMain";
+import AdminMain from "./Pages/AdminMain";
 import LoginPage from './Pages/LoginPage';
 
 
@@ -16,17 +21,19 @@ class App extends Component {
     auth: {
       userId:"",
       username:"",
-      isAuthenticated:false
-    }
+      isAuthenticated:false,
+      userType:"tenant"
+    },
   };
 
   componentWillMount(){
     axios.get("/auth/isAuthenticated").then((result)=>{
-      const {userId, isAuthenticated,username} = result.data
+      const {userId, isAuthenticated,username, userType} = result.data
       this.setState({
         auth:{
           userId,
           isAuthenticated,
+          userType,
           username
         }
       });
@@ -56,11 +63,12 @@ class App extends Component {
     const {name} = event.target;
     axios.post(name, newUser).then((data) => {
       if (data.data.isAuthenticated){
-        const {userId, isAuthenticated,username} = data.data;
+        const {userId, isAuthenticated,username, userType} = data.data;
         this.setState({
           auth:{
             userId,
             isAuthenticated,
+            userType,
             username
           }
         });
@@ -114,11 +122,20 @@ class App extends Component {
         <Route exact path = "/home" render = {()=> {
           if(!loggedIn){
             return <Redirect to = "/" />
-          } else {
-            return <Home handleLogout = {this.handleLogout} auth = { this.state.auth }/>
+          } else if(this.state.userType==="maintenance"){
+            return <MainMain><NavbarMain><button className="pullRight" onClick={this.handleLogout} auth = {this.state.auth}>Log Out</button></NavbarMain></MainMain>
+          }
+          else{
+            // use ternary operator or case switch with the different user types to render the 
+            // different home pages. All of the home pages should be unique. 
+            return <TenantMain><NavbarTenant><button className="pullRight" onClick={this.handleLogout} auth = {this.state.auth}>Log Out</button></NavbarTenant></TenantMain>
           } 
+
         }
         }/>
+          {/* from Eric's version  return <Home handleLogout = {this.handleLogout} auth = { this.state.auth }/> */}
+
+        
         </div>
       </Router>
     );

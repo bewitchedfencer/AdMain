@@ -27,8 +27,14 @@ router.get('/allSiteInspections', mainController.getSiteInspections);
 //post a new site observations
 router.post('/allSiteInspections', mainController.postSiteObservations);
 
-//get all maintenance activity
-router.get('/allMaintenance', mainController.getMaintenance);
+//get all maintenance activity for tenant table
+router.get('/tenantMaintenance', mainController.getTenMaintenance);
+
+// //get all maintenance activity for maintenance team table
+// router.get('/mainMaintenance', mainController.getMainMaintenance);
+
+// //get all maintenance activity for tenant table
+// router.get('/adminMaintenance', mainController.getAdminMaintenance);
 
 //filter (get) all maintenance activity
 

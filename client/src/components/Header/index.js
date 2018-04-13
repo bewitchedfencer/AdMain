@@ -6,9 +6,9 @@ import "./style.css";
 
 const Header = (props) => {
 	return(
-		<div className="header" {...props}>
+		<header className="header" {...props}>
 			{props.children}
-		</div>
+		</header>
 	);
 }
 

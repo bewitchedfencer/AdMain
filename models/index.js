@@ -1,6 +1,5 @@
 module.exports = {
 	User:require("./User.js"),
-	AdminReq:require("./AdminReq.js"),
 	MaintenanceReq:require("./MaintenanceReq.js"),
 	SiteObservation:require("./SiteObservation.js"),
 	Warehouse:require("./Warehouse.js"),
