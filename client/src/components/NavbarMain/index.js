@@ -17,7 +17,7 @@ const NavbarMain = (props) => {
 			<NavItem eventKey={2} href="/viewSites">View Site Inspections</NavItem>
 			<NavItem eventKey={3} href="/today">To Do Today</NavItem>
 			<NavItem eventKey={4} href="/warehouses">Warehouses</NavItem>
-			{props.children}
+			<button className="pullRight" onClick={props.name} auth={props.dataAuth}>Log Out</button>
 		</Navbar>
 	);
 }

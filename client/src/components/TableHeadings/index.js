@@ -4,13 +4,13 @@ import "./style.css";
 // gather other componets
 //import otherComponent from "../otherComponent";
 
-const TableHeadings = ({data}) => {
+const TableHeadings = (props) => {
 	return(
-		<div>
-			{data.map((heading)=>{
-				return <th>{heading}</th>
+		<thead>
+			{props.data.map(heading=>{
+				return <th key={props.data.indexOf(heading)}>{heading}</th>
 			})}
-		</div>
+		</thead>
 	);
 }
 

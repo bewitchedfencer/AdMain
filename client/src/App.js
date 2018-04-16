@@ -10,7 +10,6 @@ import NavbarTenant from "./components/NavbarTenant";
 
 import MainMain from "./Pages/MainMain";
 import TenantMain from "./Pages/TenantMain";
-import AdminMain from "./Pages/AdminMain";
 import LoginPage from './Pages/LoginPage';
 
 
@@ -119,16 +118,28 @@ class App extends Component {
             />
           }  
         }}/>
+        <Route exact path = "/mainmain" render = {()=>{
+           return (<MainMain><NavbarMain name={this.handleLogout} dataAuth={this.state.auth}/></MainMain>);
+        }}/>
+        <Route exact path ="/tenantMaintenance" render = {()=>{
+        return (                        
+          <TenantMain>
+              <NavbarTenant name={this.handleLogout} dataAuth={this.state.auth}/>
+          </TenantMain>
+            );
+        }}
+        />
         <Route exact path = "/home" render = {()=> {
           if(!loggedIn){
             return <Redirect to = "/" />
           } else if(this.state.userType==="maintenance"){
-            return <MainMain><NavbarMain><button className="pullRight" onClick={this.handleLogout} auth = {this.state.auth}>Log Out</button></NavbarMain></MainMain>
+            return <Redirect to = "/mainmain"/>
           }
           else{
             // use ternary operator or case switch with the different user types to render the 
             // different home pages. All of the home pages should be unique. 
-            return <TenantMain><NavbarTenant><button className="pullRight" onClick={this.handleLogout} auth = {this.state.auth}>Log Out</button></NavbarTenant></TenantMain>
+            return <Redirect to = "/tenantMaintenance"/>
+          
           } 
 
         }

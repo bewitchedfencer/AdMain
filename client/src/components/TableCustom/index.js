@@ -1,19 +1,19 @@
 import React from 'react';
 import "./style.css";
+import TableHeadings from "../TableHeadings";
+import TableData from "../TableData";
 
 const TableCustom = (props) => {
 	return(
 		<div>
 			<table name={props.name}>
-				<TableRow>
-					<TableHeadings data={headingPop}/>
-				</TableRow>
+					<TableHeadings data={props.headingPop}/>
 				<tbody>
-					{tableData.map((row)=>{
+					{props.tableData.map((row)=>{
 						return (
-							<TableRow>
-								<TableData headingNames={headingPop} data={tableData} />
-							</TableRow>
+							<tr>
+								<TableData headingNames={props.headingPop} data={props.tableData} />
+							</tr>
 						);
 					})}
 				</tbody>

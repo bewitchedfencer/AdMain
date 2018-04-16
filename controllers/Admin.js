@@ -53,8 +53,10 @@ postSiteObservations: (req, res) => {
 
 //get all tenant maintenance activity
 getTenMaintenance: (req, res) => {
-    db.MaintenanceReq.find({unit, site, mainCat, description, alarm, bestTimes, resubmit})
-    .then(function(maintenance){
+    db.MaintenanceReq.select('-priority -assigned')
+    .then(function(maintenance, err){
+        if(err) throw err;
+        console.log(maintenance);
         res.json(maintenance);
     });
 },
