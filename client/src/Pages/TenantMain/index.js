@@ -10,8 +10,9 @@ class TenantMain extends Component{
 		mainData:[]
 	};
 
-	componentDidMount(){
+	componentWillMount(){
 		API.getTenMain().then((result)=>{
+			console.log("front-end", result);
 			this.setState({
 				mainData:result
 			})

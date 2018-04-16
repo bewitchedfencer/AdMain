@@ -1,4 +1,5 @@
 //controllers for the back-end routes
+const mongoose = require('mongoose');
 const db = require("../models");
 
 module.exports = {
@@ -53,8 +54,7 @@ postSiteObservations: (req, res) => {
 
 //get all tenant maintenance activity
 getTenMaintenance: (req, res) => {
-    db.MaintenanceReq.select('-priority -assigned')
-    .then(function(maintenance, err){
+    db.MaintenanceReq.find({}, '-priority -assigned', function(maintenance, err){
         if(err) throw err;
         console.log(maintenance);
         res.json(maintenance);
