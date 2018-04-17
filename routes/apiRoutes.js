@@ -88,6 +88,8 @@ router.post('/newFollowup', mainController.newFollowup)
 //post an application
 router.post('/newApplication', mainController.newApplication);
 
+//submit maintenance requests
+router.post('/submitMain', mainController.newMaintenance);
 
 	return router;
 };

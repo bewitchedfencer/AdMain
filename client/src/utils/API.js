@@ -16,7 +16,8 @@ addInspection: function(inspection){
 },
 
 getTenMain: function(){
-    return axios.get('/tenantMaintenance');
+    console.log("axios request sent");
+    return axios.get('/api/tenantMaintenance');
 },
 
 getMainMain: function(){
@@ -82,6 +83,10 @@ newFollowup: function(followup){
 
 newApplication: function(application){
     return axios.post('/newApplication', application);
+},
+
+newMaintenance: function(maintenance){
+    return axios.post('/api/submitMain', maintenance);
 }
 
 };

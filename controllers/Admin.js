@@ -54,16 +54,18 @@ postSiteObservations: (req, res) => {
 
 //get all tenant maintenance activity
 getTenMaintenance: (req, res) => {
-    db.MaintenanceReq.find({}, '-priority -assigned', function(maintenance, err){
-        if(err) throw err;
+    console.log("controller activate!");
+    db.MaintenanceReq.find({}).then(function(maintenance){
         console.log(maintenance);
         res.json(maintenance);
-    });
+    }).catch(function(err){
+		console.log(err);
+	});
 },
 
 //get all maintenance data for the maintenance team
 getMainMaintenance: (req, res) => {
-    db.MaintenanceReq.find({unit, site, mainCat, description, alarm, bestTimes, resubmit, contactName, contact})
+    db.MaintenanceReqs.find({unit, site, mainCat, description, alarm, bestTimes, resubmit, contactName, contact})
     .then(function(maintenance){
         res.json(maintenance);
     });
@@ -183,6 +185,13 @@ newApplication: (req, res) => {
         res.send(`The new application has been added with new id ${appCreated._id}.`);
     });
 },
+
+newMaintenance: (req, res) => {
+    const newMain = req.body;
+    db.MaintenanceReq.create(newMain).then(function(newMaintenance){
+        res.send('The new maintenance record has been added.');
+    })
+}
 
 
 };
