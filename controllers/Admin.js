@@ -55,7 +55,7 @@ postSiteObservations: (req, res) => {
 //get all tenant maintenance activity
 getTenMaintenance: (req, res) => {
     console.log("controller activate!");
-    db.MaintenanceReq.find({}).then(function(maintenance){
+    db.MaintenanceReq.find({}, '-assigned -createdAt -priority').then(function(maintenance){
         console.log(maintenance);
         res.json(maintenance);
     }).catch(function(err){

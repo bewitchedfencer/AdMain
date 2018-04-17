@@ -16,16 +16,18 @@ class TenantMain extends Component{
 			this.setState({
 				mainData:result
 			})
+			console.log("current state", this.state);
 		});
 	};
 
 	render(props){
-		const {data} = this.state;
+		const newData= this.state.mainData;
+		console.log(newData);
 		return (
 			<div>
 				{this.props.children}
 				<ReactTable 
-				data={data}
+				data={newData.data}
 				columns={[
 					{
 						Header:"Warehouse",
