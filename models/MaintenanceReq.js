@@ -12,8 +12,7 @@ const MaintenanceReq = new Schema({
         ref:"Warehouse"
     },
     mainCat:{
-        type:String,
-        required:true
+        type:String
     },
     priority:{
         type:String,
